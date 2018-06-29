@@ -22,9 +22,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * | Tab    |   Q  |   W  |   E  |   R  |   T  |  [   |           |  ]   |   Y  |   U  |   I  |   O  |   P  |   '    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | Caps   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |; / L2|   L1   |
+ * | RALT   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |; / L2|   L1   |
  * |--------+------+------+------+------+------| Hyper|           | Meh  |------+------+------+------+------+--------|
- * | LShift |Z/Ctrl|   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//Ctrl| RShift |
+ * | LSPO   |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |  /   | RSPC   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   | Home |      |AltShf| Ins  |  Win |                                       | Left | Down |  Up  |Right | End  |
  *   `----------------------------------'                                       `----------------------------------'
@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRAVE,       KC_1,         KC_2,   KC_3,   KC_4,   KC_5,   KC_BSLASH,
         KC_TAB,         KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   KC_LBRACKET,
         RALT(KC_NO),    KC_A,         KC_S,   KC_D,   KC_F,   KC_G,
-        KC_LSPO,        CTL_T(KC_Z),  KC_X,   KC_C,   KC_V,   KC_B,   ALL_T(KC_NO),
+        KC_LSPO,        KC_Z,         KC_X,   KC_C,   KC_V,   KC_B,   ALL_T(KC_NO),
         KC_HOME,        KC_NO,      LALT(KC_LSFT),  KC_INS,KC_RGUI,
                                                KC_SYSREQ,  KC_ESC,
                                                               KC_PSCREEN,
@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_EQUAL,    KC_6,   KC_7,  KC_8,   KC_9,   KC_0,             KC_MINS,
              KC_RBRC,     KC_Y,   KC_U,  KC_I,   KC_O,   KC_P,             KC_QUOTE,
                           KC_H,   KC_J,  KC_K,   KC_L,   LT(MDIA, KC_SCLN),TO(SYMB),
-             MEH_T(KC_NO),KC_N,   KC_M,  KC_COMM,KC_DOT, CTL_T(KC_SLSH),   KC_RSPC,
+             MEH_T(KC_NO),KC_N,   KC_M,  KC_COMM,KC_DOT, KC_SLSH,          KC_RSPC,
                                   KC_LEFT, KC_DOWN,KC_UP,KC_RIGHT,          KC_END,
              KC_PGUP,        KC_PAUSE,
              KC_PGDN,
@@ -72,12 +72,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   | EPRM  |      |      |      |      |                                       |      |    . |   0  |   =  |      |
  *   `-----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |Animat|      |       |Toggle|Solid |
- *                                 ,------|------|------|       |------+------+------.
- *                                 |Bright|Bright|      |       |      |Hue-  |Hue+  |
- *                                 |ness- |ness+ |------|       |------|      |      |
- *                                 |      |      |      |       |      |      |      |
- *                                 `--------------------'       `--------------------'
+ *                                        | SysRq| Esc  |       | PgUp | Pause|
+ *                                 ,------|------|------|       |------+--------+------.
+ *                                 |      |      |Print |       | PgDn |        |      |
+ *                                 | Bksp | Ctrl |------|       |------|  Enter | Space|
+ *                                 |      | Esc  | Alt  |       | Del  |        |      |
+ *                                 `--------------------'       `----------------------'
  */
 // SYMBOLS
 [SYMB] = LAYOUT_ergodox(
@@ -87,18 +87,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS,KC_HASH,KC_DLR, KC_LPRN,KC_RPRN,KC_GRV,
        KC_TRNS,KC_PERC,KC_CIRC,KC_LBRC,KC_RBRC,KC_TILD,KC_TRNS,
           EPRM,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-                                       RGB_MOD,KC_TRNS,
-                                               KC_TRNS,
-                               RGB_VAD,RGB_VAI,KC_TRNS,
+                                            KC_SYSREQ,  KC_ESC,
+                                                        KC_PSCREEN,
+                               KC_BSPACE,CTL_T(KC_ESC),KC_LALT,
        // right hand
        KC_TRNS, KC_F6,   KC_F7,  KC_F8,   KC_F9,   KC_F10,  KC_F11,
        KC_TRNS, KC_UP,   KC_7,   KC_8,    KC_9,    KC_ASTR, KC_F12,
                 KC_DOWN, KC_4,   KC_5,    KC_6,    KC_PLUS, TO(BASE),
        KC_TRNS, KC_AMPR, KC_1,   KC_2,    KC_3,    KC_BSLS, KC_TRNS,
                          KC_TRNS,KC_DOT,  KC_0,    KC_EQL,  KC_TRNS,
-       RGB_TOG, RGB_SLD,
-       KC_TRNS,
-       KC_TRNS, RGB_HUD, RGB_HUI
+       KC_PGUP,        KC_PAUSE,
+       KC_PGDN,
+       KC_DEL,KC_ENTER, KC_SPACE
 ),
 /* Keymap 2: Media and mouse keys
  *
