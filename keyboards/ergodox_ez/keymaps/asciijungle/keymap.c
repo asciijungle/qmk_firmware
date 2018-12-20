@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         KC_GRAVE,       KC_1,         KC_2,   KC_3,   KC_4,   KC_5,   KC_BSLASH,
         KC_TAB,         KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   KC_LBRACKET,
-        RALT(KC_NO),    KC_A,         KC_S,   KC_D,   KC_F,   KC_G,
+        KC_RALT,        KC_A,         KC_S,   KC_D,   KC_F,   KC_G,
         KC_LSPO,        KC_Z,         KC_X,   KC_C,   KC_V,   KC_B,   ALL_T(KC_NO),
         KC_HOME,        KC_NO,      LALT(KC_LSFT),  KC_INS,KC_RGUI,
                                                KC_SYSREQ,  KC_ESC,
